@@ -59,7 +59,7 @@ openHostPanelBtn.addEventListener("click", () => {
   }
 
   if (password === HOST_PANEL_PASSWORD) {
-    window.location.href = "anfitriao.html";
+    window.location.href = "/anfitriao.html";
     return;
   }
 
