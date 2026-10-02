@@ -52,7 +52,7 @@ function syncCompanionsNamesField() {
 
 openModalBtn.addEventListener("click", openModal);
 openHostPanelBtn.addEventListener("click", () => {
-  const password = window.prompt("Digite a senha para acessar o painel do anfitriao:");
+  const password = window.prompt("Digite a senha para acessar o painel do anfitrião:");
 
   if (password === null) {
     return;
@@ -120,7 +120,7 @@ form.addEventListener("submit", async (event) => {
   }
 
   if (!isFirestoreConfigured()) {
-    window.alert("Firestore ainda nao esta configurado. Preencha as variaveis VITE_FIREBASE_* no arquivo .env.");
+    window.alert("Firestore ainda não está configurado. Preencha as variáveis VITE_FIREBASE_* no arquivo .env.");
     return;
   }
 
@@ -137,12 +137,12 @@ form.addEventListener("submit", async (event) => {
       companionsNames: parsedCompanionsNames,
     });
   } catch (error) {
-    window.alert("Nao foi possivel confirmar presenca agora. Verifique a configuracao do Firestore.");
+    window.alert("Não foi possível confirmar presença agora. Verifique a configuração do Firestore.");
     console.error(error);
     return;
   }
 
-  successMainText.textContent = `${fullName}, sua presenca foi confirmada com ${companions} acompanhante(s).`;
+  successMainText.textContent = `${fullName}, sua presença foi confirmada com ${companions} acompanhante(s).`;
 
   closeModal();
   openSuccessModal();

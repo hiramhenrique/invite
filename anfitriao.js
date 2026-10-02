@@ -13,18 +13,18 @@ async function deleteGuest(id) {
   try {
     await deleteGuestConfirmation(id);
   } catch {
-    window.alert("Nao foi possivel excluir o convidado agora.");
+    window.alert("Não foi possível excluir o convidado agora.");
   }
 }
 
 async function sendLocationToGuest(guest, messageEl) {
-  const locationMessage = `Oi, ${guest.fullName}! Aqui esta a localizacao do evento: https://www.google.com/maps`;
+  const locationMessage = `Oi, ${guest.fullName}! Aqui está a localização do evento: https://www.google.com/maps`;
 
   try {
     await navigator.clipboard.writeText(locationMessage);
-    messageEl.textContent = "Mensagem de localizacao copiada. Agora e so enviar para este convidado.";
+    messageEl.textContent = "Mensagem de localização copiada. Agora é só enviar para este convidado.";
   } catch {
-    messageEl.textContent = "Nao foi possivel copiar automaticamente. Use: " + locationMessage;
+    messageEl.textContent = "Não foi possível copiar automaticamente. Use: " + locationMessage;
   }
 }
 
@@ -50,7 +50,7 @@ function buildCard(guest) {
       </div>
 
       <div class="guest-actions">
-        <button class="send-location-btn" type="button">Enviar localizacao</button>
+        <button class="send-location-btn" type="button">Enviar localização</button>
         <button class="delete-btn" type="button">Excluir</button>
       </div>
 
@@ -108,7 +108,7 @@ function render(confirmations) {
 
 if (!isFirestoreConfigured()) {
   emptyStateEl.style.display = "block";
-  emptyStateEl.textContent = "Firestore nao configurado. Preencha as variaveis VITE_FIREBASE_* no .env.";
+  emptyStateEl.textContent = "Firestore não configurado. Preencha as variáveis VITE_FIREBASE_* no .env.";
 } else {
   subscribeGuestConfirmations(
     (confirmations) => {

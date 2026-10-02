@@ -37,7 +37,7 @@ export function normalizePhone(phone) {
 
 function ensureFirebaseReady() {
   if (!firebaseReady || !db) {
-    throw new Error("Firebase nao configurado. Preencha as variaveis VITE_FIREBASE_* no arquivo .env.");
+    throw new Error("Firebase não configurado. Preencha as variáveis VITE_FIREBASE_* no arquivo .env.");
   }
 }
 
