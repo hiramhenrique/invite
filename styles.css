@@ -391,9 +391,22 @@ body {
 }
 
 .modal-map-link {
-  width: 100%;
+  display: block;
+  width: min(280px, 100%);
   text-align: center;
-  margin-bottom: 10px;
+  margin: 6px auto 12px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 14px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  box-shadow:
+    0 0 12px rgba(184, 77, 255, 0.5),
+    0 0 20px rgba(39, 248, 255, 0.42);
+}
+
+.modal-map-link:hover {
+  transform: translateY(-1px) scale(1.01);
+  filter: brightness(1.2);
 }
 
 label {
