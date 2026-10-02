@@ -1,3 +1,9 @@
+import {
+  addGuestConfirmation,
+  isFirestoreConfigured,
+  isPhoneAlreadyUsed,
+} from "./firestore.js";
+
 const openModalBtn = document.getElementById("openModalBtn");
 const closeModalBtn = document.getElementById("closeModalBtn");
 const modal = document.getElementById("confirmModal");
@@ -10,42 +16,6 @@ const successModal = document.getElementById("successModal");
 const closeSuccessBtn = document.getElementById("closeSuccessBtn");
 const successOkBtn = document.getElementById("successOkBtn");
 const successMainText = document.getElementById("successMainText");
-const STORAGE_KEY = "guestConfirmations";
-
-function getConfirmations() {
-  const data = localStorage.getItem(STORAGE_KEY);
-
-  if (!data) {
-    return [];
-  }
-
-  try {
-    const parsed = JSON.parse(data);
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
-}
-
-function saveConfirmation(confirmation) {
-  const list = getConfirmations();
-  list.push(confirmation);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-}
-
-function normalizePhone(phone) {
-  return String(phone || "").replace(/\D/g, "");
-}
-
-function isPhoneAlreadyUsed(phone) {
-  const normalizedPhone = normalizePhone(phone);
-
-  if (!normalizedPhone) {
-    return false;
-  }
-
-  return getConfirmations().some((item) => normalizePhone(item.phone) === normalizedPhone);
-}
 
 function openModal() {
   modal.classList.add("show");
@@ -112,7 +82,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   if (!form.checkValidity()) {
@@ -134,9 +104,8 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  if (isPhoneAlreadyUsed(phone)) {
-    phoneInput.setCustomValidity("Este numero de telefone ja foi utilizado em outra confirmacao.");
-    phoneInput.reportValidity();
+  if (!isFirestoreConfigured()) {
+    window.alert("Firestore ainda nao esta configurado. Preencha as variaveis VITE_FIREBASE_* no arquivo .env.");
     return;
   }
 
@@ -145,13 +114,24 @@ form.addEventListener("submit", (event) => {
     .map((name) => name.trim())
     .filter(Boolean);
 
-  saveConfirmation({
-    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-    fullName,
-    phone,
-    companions,
-    companionsNames: parsedCompanionsNames,
-  });
+  try {
+    if (await isPhoneAlreadyUsed(phone)) {
+      phoneInput.setCustomValidity("Este numero de telefone ja foi utilizado em outra confirmacao.");
+      phoneInput.reportValidity();
+      return;
+    }
+
+    await addGuestConfirmation({
+      fullName,
+      phone,
+      companions,
+      companionsNames: parsedCompanionsNames,
+    });
+  } catch (error) {
+    window.alert("Nao foi possivel confirmar presenca agora. Verifique a configuracao do Firestore.");
+    console.error(error);
+    return;
+  }
 
   successMainText.textContent = `${fullName}, sua presenca foi confirmada com ${companions} acompanhante(s).`;
 

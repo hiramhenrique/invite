@@ -1,33 +1,20 @@
-const STORAGE_KEY = "guestConfirmations";
+import {
+  deleteGuestConfirmation,
+  isFirestoreConfigured,
+  subscribeGuestConfirmations,
+} from "./firestore.js";
 
 const guestListEl = document.getElementById("guestList");
 const emptyStateEl = document.getElementById("emptyState");
 const totalGuestsEl = document.getElementById("totalGuests");
 const totalCompanionsEl = document.getElementById("totalCompanions");
 
-function getConfirmations() {
-  const data = localStorage.getItem(STORAGE_KEY);
-
-  if (!data) {
-    return [];
-  }
-
+async function deleteGuest(id) {
   try {
-    const parsed = JSON.parse(data);
-    return Array.isArray(parsed) ? parsed : [];
+    await deleteGuestConfirmation(id);
   } catch {
-    return [];
+    window.alert("Nao foi possivel excluir o convidado agora.");
   }
-}
-
-function saveConfirmations(confirmations) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(confirmations));
-}
-
-function deleteGuest(id) {
-  const list = getConfirmations().filter((item) => item.id !== id);
-  saveConfirmations(list);
-  render();
 }
 
 async function sendLocationToGuest(guest, messageEl) {
@@ -91,8 +78,7 @@ function renderSummary(confirmations) {
   totalCompanionsEl.textContent = String(totalCompanions);
 }
 
-function render() {
-  const confirmations = getConfirmations();
+function render(confirmations) {
 
   guestListEl.innerHTML = "";
   renderSummary(confirmations);
@@ -108,4 +94,17 @@ function render() {
   });
 }
 
-render();
+if (!isFirestoreConfigured()) {
+  emptyStateEl.style.display = "block";
+  emptyStateEl.textContent = "Firestore nao configurado. Preencha as variaveis VITE_FIREBASE_* no .env.";
+} else {
+  subscribeGuestConfirmations(
+    (confirmations) => {
+      render(confirmations);
+    },
+    () => {
+      emptyStateEl.style.display = "block";
+      emptyStateEl.textContent = "Erro ao carregar convidados do Firestore.";
+    }
+  );
+}
