@@ -336,6 +336,7 @@ body {
   width: min(520px, 100%);
   background: #120523;
   color: #fff;
+  font-family: "Nunito", sans-serif;
   border-radius: 16px;
   padding: 22px;
   box-shadow: var(--shadow);
@@ -372,15 +373,9 @@ body {
 .success-main-text {
   margin: 6px 0 8px;
   color: var(--lime);
-  font-size: 1.05rem;
+  font-size: 1.02rem;
+  font-weight: 800;
   text-shadow: 0 0 9px rgba(98, 255, 67, 0.85);
-}
-
-.success-help-text {
-  margin: 0 0 14px;
-  color: var(--yellow);
-  font-size: 0.98rem;
-  text-shadow: 0 0 9px rgba(255, 229, 59, 0.84);
 }
 
 .in-modal {
@@ -409,11 +404,35 @@ input {
   border-radius: 10px;
   padding: 12px;
   font-size: 1rem;
-  font-family: "Permanent Marker", cursive;
+  font-family: "Nunito", sans-serif;
+}
+
+textarea {
+  width: 100%;
+  border: 1px solid rgba(40, 247, 255, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-family: "Nunito", sans-serif;
+  resize: vertical;
 }
 
 input::placeholder {
   color: #c8bcdf;
+}
+
+textarea::placeholder {
+  color: #c8bcdf;
+}
+
+.companions-names-wrap {
+  margin-top: 10px;
+}
+
+.companions-names-wrap[hidden] {
+  display: none;
 }
 
 .no-spin {

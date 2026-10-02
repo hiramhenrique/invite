@@ -6,7 +6,7 @@
   <title>Convite | 25 anos da Cauani Fernanda</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Neonderthaw&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Neonderthaw&family=Nunito:wght@500;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -94,6 +94,11 @@
         <label for="companions">Quantidade de acompanhantes</label>
         <input id="companions" class="no-spin" name="companions" type="number" min="0" max="10" required>
 
+        <div id="companionsNamesWrap" class="companions-names-wrap" hidden>
+          <label for="companionsNames">Nome dos acompanhantes</label>
+          <textarea id="companionsNames" name="companionsNames" rows="3" placeholder="Ex.: Ana Souza, Carlos Lima"></textarea>
+        </div>
+
         <button class="submit-btn" type="submit">Enviar confirmacao</button>
       </form>
     </div>
@@ -104,13 +109,12 @@
       <button id="closeSuccessBtn" class="close-btn" type="button" aria-label="Fechar confirmacao">X</button>
       <h3 id="successTitle">Presenca confirmada!</h3>
       <p id="successMainText" class="success-main-text"></p>
-      <p class="success-help-text">Traga meio quilo de carne por pessoa e a bebida que voce for consumir.</p>
       <div class="location-highlight in-modal">
         <span class="gps-arrow" aria-hidden="true"></span>
-        <p>Localizacao liberada apos confirmacao. Toque abaixo para acessar no Google Maps.</p>
+        <p>Endereco do evento:</p>
       </div>
       <a class="maps-link modal-map-link" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">
-        Acessar localizacao
+        Google Maps
       </a>
       <button id="successOkBtn" class="submit-btn" type="button">Fechar</button>
     </div>
