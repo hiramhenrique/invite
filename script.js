@@ -1,7 +1,6 @@
 import {
   addGuestConfirmation,
   isFirestoreConfigured,
-  isPhoneAlreadyUsed,
 } from "./firestore.js";
 
 const openModalBtn = document.getElementById("openModalBtn");
@@ -131,12 +130,6 @@ form.addEventListener("submit", async (event) => {
     .filter(Boolean);
 
   try {
-    if (await isPhoneAlreadyUsed(phone)) {
-      phoneInput.setCustomValidity("Este numero de telefone ja foi utilizado em outra confirmacao.");
-      phoneInput.reportValidity();
-      return;
-    }
-
     await addGuestConfirmation({
       fullName,
       phone,
