@@ -36,7 +36,7 @@ body {
 .container {
   width: min(1060px, 94vw);
   margin: 0 auto;
-  padding: 42px 0 60px;
+  padding: 14px 0 44px;
 }
 
 .hero {
@@ -44,7 +44,7 @@ body {
   text-align: center;
   border: 2px solid rgba(255, 41, 207, 0.44);
   border-radius: 26px;
-  padding: 28px 18px 32px;
+  padding: 16px 14px 18px;
   background: rgba(0, 0, 0, 0.62);
   box-shadow:
     0 0 26px rgba(255, 41, 207, 0.2),
@@ -110,17 +110,18 @@ body {
   background: rgba(255, 41, 207, 0.12);
   color: #ffeefb;
   font-weight: 400;
-  padding: 8px 16px;
+  padding: 6px 12px;
   border-radius: 999px;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.6px;
   border: 1px solid rgba(255, 41, 207, 0.75);
   box-shadow: 0 0 22px rgba(255, 41, 207, 0.34);
   text-shadow: 0 0 12px rgba(255, 41, 207, 0.82);
+  font-size: 0.92rem;
 }
 
 .title-neon {
   font-family: "Neonderthaw", cursive;
-  margin: 18px 0 0;
+  margin: 10px 0 0;
   line-height: 0.8;
   letter-spacing: 1px;
   font-weight: 400;
@@ -128,7 +129,7 @@ body {
 
 .title-neon span {
   display: block;
-  font-size: clamp(4.2rem, 12vw, 8.8rem);
+  font-size: clamp(3.2rem, 8.2vw, 5.8rem);
 }
 
 .name-pink {
@@ -149,9 +150,9 @@ body {
 
 .age-line {
   font-family: "Bebas Neue", sans-serif;
-  margin: 8px 0 6px;
-  font-size: clamp(3rem, 10vw, 5.6rem);
-  letter-spacing: 3px;
+  margin: 4px 0 2px;
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  letter-spacing: 2px;
   color: var(--yellow);
   text-shadow:
     0 0 10px rgba(255, 229, 59, 0.98),
@@ -159,16 +160,16 @@ body {
 }
 
 .subtitle {
-  margin: 0 auto 6px;
+  margin: 0 auto 2px;
   max-width: 760px;
   color: var(--text-soft);
-  font-size: clamp(1rem, 2.7vw, 1.35rem);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   text-shadow: 0 0 14px rgba(39, 248, 255, 0.36);
 }
 
 .party-line {
   margin: 0;
-  font-size: clamp(1.7rem, 5.2vw, 3.2rem);
+  font-size: clamp(1.25rem, 3.2vw, 2rem);
   color: var(--lime);
   text-shadow: 0 0 10px rgba(98, 255, 67, 0.85);
 }
@@ -181,38 +182,38 @@ body {
 }
 
 .energy-note {
-  margin: 6px auto 18px;
-  font-size: clamp(1rem, 2.8vw, 1.4rem);
+  margin: 2px auto 10px;
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
   color: var(--blue);
   text-shadow: 0 0 10px rgba(53, 169, 255, 0.86);
 }
 
 .info-grid {
-  margin: 0 auto 14px;
+  margin: 0 auto 8px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 8px;
   width: min(920px, 100%);
 }
 
 .info-item {
-  border-radius: 16px;
+  border-radius: 12px;
   background: var(--card);
   border: 2px solid rgba(184, 77, 255, 0.72);
   box-shadow: 0 0 18px rgba(184, 77, 255, 0.24);
-  padding: 12px 10px;
+  padding: 8px 8px;
 }
 
 .info-item h3 {
   margin: 0;
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 2px;
-  font-size: 1.4rem;
+  font-size: 1.15rem;
 }
 
 .info-item p {
-  margin: 4px 0 0;
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  margin: 2px 0 0;
+  font-size: clamp(0.8rem, 1.6vw, 0.95rem);
   line-height: 1.15;
 }
 
@@ -235,15 +236,34 @@ body {
 }
 
 .bring-note {
-  margin: 8px auto 18px;
+  margin: 6px auto 8px;
   width: min(740px, 100%);
-  padding: 12px 14px;
+  padding: 10px 12px;
   border: 2px solid rgba(255, 229, 59, 0.8);
   border-radius: 14px;
   color: var(--yellow);
-  font-size: clamp(1rem, 2.6vw, 1.35rem);
+  font-size: clamp(0.92rem, 2.2vw, 1.15rem);
   text-shadow: 0 0 11px rgba(255, 229, 59, 0.9);
   box-shadow: 0 0 20px rgba(255, 229, 59, 0.24);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  border-width: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  transition: opacity 220ms ease, max-height 220ms ease, padding 220ms ease, margin 220ms ease, border-width 220ms ease;
+}
+
+.bring-note.show {
+  opacity: 1;
+  max-height: 120px;
+  border-width: 2px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 6px;
+  margin-bottom: 8px;
 }
 
 .confirm-btn {
@@ -251,10 +271,10 @@ body {
   border-radius: 18px;
   background: linear-gradient(135deg, #ff29cf 0%, #27f8ff 45%, #ffe53b 100%);
   color: #1b0325;
-  font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
   font-weight: 800;
-  padding: 16px 36px;
-  min-width: min(100%, 420px);
+  padding: 12px 24px;
+  min-width: min(100%, 360px);
   box-shadow: 0 0 28px rgba(39, 248, 255, 0.66), 0 0 36px rgba(255, 41, 207, 0.62);
   cursor: pointer;
   transition: transform 180ms ease, box-shadow 180ms ease;
@@ -267,7 +287,7 @@ body {
 
 .screen-message {
   min-height: 1.4em;
-  margin: 14px auto 0;
+  margin: 8px auto 0;
   max-width: 620px;
   color: var(--lime);
   font-weight: 700;
@@ -281,7 +301,7 @@ body {
 }
 
 .map-section {
-  margin-top: 44px;
+  margin-top: 26px;
   text-align: center;
   animation: fadeUp 800ms 120ms both;
 }
@@ -529,7 +549,7 @@ input::placeholder {
 
 @media (max-width: 640px) {
   .container {
-    padding-top: 28px;
+    padding-top: 18px;
   }
 
   .hero {

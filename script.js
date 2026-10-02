@@ -3,6 +3,7 @@ const closeModalBtn = document.getElementById("closeModalBtn");
 const modal = document.getElementById("confirmModal");
 const form = document.getElementById("rsvpForm");
 const screenMessage = document.getElementById("screenMessage");
+const bringNote = document.getElementById("bringNote");
 
 function openModal() {
   modal.classList.add("show");
@@ -49,6 +50,9 @@ form.addEventListener("submit", (event) => {
 
   screenMessage.textContent = `${fullName}, sua presenca foi confirmada com ${companions} acompanhante(s).`;
   screenMessage.classList.add("show");
+
+  bringNote.textContent = "Traga meio quilo de carne por pessoa e a bebida que voce for consumir.";
+  bringNote.classList.add("show");
 
   closeModal();
   form.reset();
