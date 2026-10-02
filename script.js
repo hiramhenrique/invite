@@ -2,6 +2,7 @@ const openModalBtn = document.getElementById("openModalBtn");
 const closeModalBtn = document.getElementById("closeModalBtn");
 const modal = document.getElementById("confirmModal");
 const form = document.getElementById("rsvpForm");
+const phoneInput = document.getElementById("phone");
 const companionsInput = document.getElementById("companions");
 const companionsNamesWrap = document.getElementById("companionsNamesWrap");
 const companionsNamesInput = document.getElementById("companionsNames");
@@ -30,6 +31,20 @@ function saveConfirmation(confirmation) {
   const list = getConfirmations();
   list.push(confirmation);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+}
+
+function normalizePhone(phone) {
+  return String(phone || "").replace(/\D/g, "");
+}
+
+function isPhoneAlreadyUsed(phone) {
+  const normalizedPhone = normalizePhone(phone);
+
+  if (!normalizedPhone) {
+    return false;
+  }
+
+  return getConfirmations().some((item) => normalizePhone(item.phone) === normalizedPhone);
 }
 
 function openModal() {
@@ -69,6 +84,9 @@ closeModalBtn.addEventListener("click", closeModal);
 closeSuccessBtn.addEventListener("click", closeSuccessModal);
 successOkBtn.addEventListener("click", closeSuccessModal);
 companionsInput.addEventListener("input", syncCompanionsNamesField);
+phoneInput.addEventListener("input", () => {
+  phoneInput.setCustomValidity("");
+});
 
 modal.addEventListener("click", (event) => {
   if (event.target === modal) {
@@ -113,6 +131,12 @@ form.addEventListener("submit", (event) => {
 
   if (companions > 0 && !companionsNames) {
     companionsNamesInput.reportValidity();
+    return;
+  }
+
+  if (isPhoneAlreadyUsed(phone)) {
+    phoneInput.setCustomValidity("Este numero de telefone ja foi utilizado em outra confirmacao.");
+    phoneInput.reportValidity();
     return;
   }
 
