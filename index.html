@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convite | 25 anos da Cauni Fernanda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-shape bg-shape-1"></div>
+  <div class="bg-shape bg-shape-2"></div>
+
+  <main class="container">
+    <section class="hero">
+      <p class="tag">Voce e nosso convidado especial</p>
+      <h1>25 anos da<br><span>Cauni Fernanda</span></h1>
+      <p class="subtitle">Uma tarde para celebrar, sorrir e criar memorias inesqueciveis.</p>
+
+      <div class="event-card">
+        <p><strong>Data:</strong> 24 de outubro</p>
+        <p><strong>Horario:</strong> 16:00</p>
+        <p><strong>Endereco:</strong> em breve</p>
+      </div>
+
+      <button id="openModalBtn" class="confirm-btn" type="button">
+        Confirmar Presenca
+      </button>
+    </section>
+
+    <section class="map-section">
+      <h2>Localizacao no Google Maps</h2>
+      <p class="map-note">
+        O endereco oficial sera adicionado em breve. Enquanto isso, voce ja pode abrir o Google Maps.
+      </p>
+
+      <div class="map-frame-wrap">
+        <iframe
+          title="Mapa - local da festa"
+          src="https://maps.google.com/maps?q=Brasil&t=&z=4&ie=UTF8&iwloc=&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <a class="maps-link" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">
+        Abrir no Google Maps
+      </a>
+    </section>
+  </main>
+
+  <div id="confirmModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <button id="closeModalBtn" class="close-btn" type="button" aria-label="Fechar dialogo">X</button>
+      <h3 id="modalTitle">Confirmar Presenca</h3>
+
+      <form id="rsvpForm">
+        <label for="fullName">Nome completo</label>
+        <input id="fullName" name="fullName" type="text" required placeholder="Digite seu nome completo">
+
+        <label for="companions">Quantidade de acompanhantes</label>
+        <input id="companions" name="companions" type="number" min="0" max="10" value="0" required>
+
+        <button class="submit-btn" type="submit">Enviar confirmacao</button>
+      </form>
+
+      <p id="resultMessage" class="result-message" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
