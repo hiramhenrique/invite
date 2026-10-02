@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel do Anfitriao | Lista de Confirmados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="anfitriao.css">
+</head>
+<body>
+  <main class="panel-wrap">
+    <header class="panel-header">
+      <h1>Painel do Anfitriao</h1>
+      <p>Controle rapido dos participantes confirmados</p>
+    </header>
+
+    <section class="summary-card">
+      <p>Total de confirmados: <strong id="totalGuests">0</strong></p>
+      <p>Total de acompanhantes: <strong id="totalCompanions">0</strong></p>
+    </section>
+
+    <section>
+      <div id="emptyState" class="empty-state">
+        Nenhum convidado confirmado ainda.
+      </div>
+
+      <div id="guestList" class="guest-list"></div>
+    </section>
+
+    <footer class="panel-footer">
+      <button id="sendLocationBtn" class="send-location-btn" type="button">
+        Enviar localizacao
+      </button>
+      <p id="footerMessage" class="footer-message" aria-live="polite"></p>
+    </footer>
+  </main>
+
+  <script type="module" src="anfitriao.js"></script>
+</body>
+</html>

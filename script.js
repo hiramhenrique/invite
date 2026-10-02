@@ -9,6 +9,28 @@ const successModal = document.getElementById("successModal");
 const closeSuccessBtn = document.getElementById("closeSuccessBtn");
 const successOkBtn = document.getElementById("successOkBtn");
 const successMainText = document.getElementById("successMainText");
+const STORAGE_KEY = "guestConfirmations";
+
+function getConfirmations() {
+  const data = localStorage.getItem(STORAGE_KEY);
+
+  if (!data) {
+    return [];
+  }
+
+  try {
+    const parsed = JSON.parse(data);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveConfirmation(confirmation) {
+  const list = getConfirmations();
+  list.push(confirmation);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+}
 
 function openModal() {
   modal.classList.add("show");
@@ -93,6 +115,19 @@ form.addEventListener("submit", (event) => {
     companionsNamesInput.reportValidity();
     return;
   }
+
+  const parsedCompanionsNames = companionsNames
+    .split(/[,\n]/)
+    .map((name) => name.trim())
+    .filter(Boolean);
+
+  saveConfirmation({
+    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    fullName,
+    phone,
+    companions,
+    companionsNames: parsedCompanionsNames,
+  });
 
   successMainText.textContent = `${fullName}, sua presenca foi confirmada com ${companions} acompanhante(s).`;
 
