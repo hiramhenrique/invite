@@ -14,12 +14,12 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyBfCrlujg1GophK2YtRCubcQulXbDwp1NA",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "convite-de-aniversario-1af15.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "convite-de-aniversario-1af15",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "convite-de-aniversario-1af15.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "237323819382",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:237323819382:web:cb1b15b0aba06fe7680257",
 };
 
 function isFirebaseConfigValid(config) {
