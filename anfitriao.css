@@ -94,6 +94,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-top: 10px;
 }
 
 .guest-name {
@@ -103,16 +104,24 @@ body {
   color: var(--cyan);
 }
 
-.guest-phone {
-  margin: 3px 0 0;
-  color: #d8ebff;
-  font-size: 0.95rem;
+.details-btn {
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #5c77ff, #2bf8ff);
+  color: #09112b;
+  font-weight: 800;
+  padding: 9px 12px;
+  cursor: pointer;
 }
 
 .guest-info {
   margin-top: 10px;
   display: grid;
   gap: 8px;
+}
+
+.guest-details[hidden] {
+  display: none;
 }
 
 .info-pill {

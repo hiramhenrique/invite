@@ -38,21 +38,24 @@ function buildCard(guest) {
 
   card.innerHTML = `
     <div class="guest-top">
-      <div>
-        <h3 class="guest-name">${guest.fullName}</h3>
-        <p class="guest-phone">Contato: ${guest.phone}</p>
+      <h3 class="guest-name">${guest.fullName}</h3>
+      <button class="details-btn" type="button" aria-expanded="false">Detalhes</button>
+    </div>
+
+    <div class="guest-details" hidden>
+      <div class="guest-info">
+        <div class="info-pill"><span class="info-label">Contato:</span> ${guest.phone}</div>
+        <div class="info-pill"><span class="info-label">Qtd acompanhantes:</span> ${guest.companions}</div>
+        <div class="info-pill"><span class="info-label">Nomes:</span> ${companionsNames}</div>
       </div>
+
       <div class="guest-actions">
         <button class="send-location-btn" type="button">Enviar localizacao</button>
         <button class="delete-btn" type="button">Excluir</button>
       </div>
-    </div>
 
-    <div class="guest-info">
-      <div class="info-pill"><span class="info-label">Qtd acompanhantes:</span> ${guest.companions}</div>
-      <div class="info-pill"><span class="info-label">Nomes:</span> ${companionsNames}</div>
+      <p class="guest-message" aria-live="polite"></p>
     </div>
-    <p class="guest-message" aria-live="polite"></p>
   `;
 
   card.querySelector(".delete-btn").addEventListener("click", () => {
@@ -62,6 +65,15 @@ function buildCard(guest) {
   const messageEl = card.querySelector(".guest-message");
   card.querySelector(".send-location-btn").addEventListener("click", () => {
     sendLocationToGuest(guest, messageEl);
+  });
+
+  const detailsBtn = card.querySelector(".details-btn");
+  const detailsPanel = card.querySelector(".guest-details");
+  detailsBtn.addEventListener("click", () => {
+    const isOpen = !detailsPanel.hidden;
+    detailsPanel.hidden = isOpen;
+    detailsBtn.setAttribute("aria-expanded", String(!isOpen));
+    detailsBtn.textContent = isOpen ? "Detalhes" : "Ocultar";
   });
 
   return card;
