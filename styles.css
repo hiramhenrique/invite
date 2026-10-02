@@ -387,7 +387,17 @@ body {
 }
 
 .in-modal {
-  margin-bottom: 8px;
+  width: min(280px, 100%);
+  margin: 6px auto 10px;
+  justify-content: center;
+  border: 1px solid rgba(255, 95, 95, 0.78);
+  box-shadow:
+    0 0 12px rgba(255, 63, 63, 0.44),
+    0 0 20px rgba(255, 63, 63, 0.24);
+}
+
+.in-modal p {
+  text-align: center;
 }
 
 .modal-map-link {
