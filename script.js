@@ -52,5 +52,5 @@ form.addEventListener("submit", (event) => {
 
   closeModal();
   form.reset();
-  form.companions.value = "0";
+  form.companions.value = "";
 });
