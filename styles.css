@@ -378,6 +378,14 @@ body {
   text-shadow: 0 0 9px rgba(98, 255, 67, 0.85);
 }
 
+.success-pool-text {
+  margin: 0 0 8px;
+  color: var(--cyan);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-shadow: 0 0 8px rgba(39, 248, 255, 0.85);
+}
+
 .success-help-text {
   margin: 0 0 10px;
   color: var(--yellow);
