@@ -90,6 +90,12 @@ body {
   gap: 12px;
 }
 
+.guest-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .guest-name {
   margin: 0;
   font-size: 1.1rem;
@@ -132,27 +138,23 @@ body {
   cursor: pointer;
 }
 
-.panel-footer {
-  margin-top: 18px;
-}
-
 .send-location-btn {
-  width: 100%;
   border: 0;
-  border-radius: 14px;
+  border-radius: 10px;
   background: linear-gradient(135deg, var(--pink), var(--cyan), var(--yellow));
   color: #1b1024;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 800;
-  padding: 14px;
+  padding: 9px 12px;
   cursor: pointer;
-  box-shadow: 0 0 18px rgba(43, 248, 255, 0.35);
+  box-shadow: 0 0 14px rgba(43, 248, 255, 0.32);
 }
 
-.footer-message {
+.guest-message {
   min-height: 1.3em;
   margin: 10px 2px 0;
   color: #adffc3;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 

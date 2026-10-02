@@ -4,8 +4,6 @@ const guestListEl = document.getElementById("guestList");
 const emptyStateEl = document.getElementById("emptyState");
 const totalGuestsEl = document.getElementById("totalGuests");
 const totalCompanionsEl = document.getElementById("totalCompanions");
-const sendLocationBtn = document.getElementById("sendLocationBtn");
-const footerMessage = document.getElementById("footerMessage");
 
 function getConfirmations() {
   const data = localStorage.getItem(STORAGE_KEY);
@@ -32,6 +30,17 @@ function deleteGuest(id) {
   render();
 }
 
+async function sendLocationToGuest(guest, messageEl) {
+  const locationMessage = `Oi, ${guest.fullName}! Aqui esta a localizacao do evento: https://www.google.com/maps`;
+
+  try {
+    await navigator.clipboard.writeText(locationMessage);
+    messageEl.textContent = "Mensagem de localizacao copiada. Agora e so enviar para este convidado.";
+  } catch {
+    messageEl.textContent = "Nao foi possivel copiar automaticamente. Use: " + locationMessage;
+  }
+}
+
 function buildCard(guest) {
   const card = document.createElement("article");
   card.className = "guest-card";
@@ -46,17 +55,26 @@ function buildCard(guest) {
         <h3 class="guest-name">${guest.fullName}</h3>
         <p class="guest-phone">Contato: ${guest.phone}</p>
       </div>
-      <button class="delete-btn" type="button">Excluir</button>
+      <div class="guest-actions">
+        <button class="send-location-btn" type="button">Enviar localizacao</button>
+        <button class="delete-btn" type="button">Excluir</button>
+      </div>
     </div>
 
     <div class="guest-info">
       <div class="info-pill"><span class="info-label">Qtd acompanhantes:</span> ${guest.companions}</div>
       <div class="info-pill"><span class="info-label">Nomes:</span> ${companionsNames}</div>
     </div>
+    <p class="guest-message" aria-live="polite"></p>
   `;
 
   card.querySelector(".delete-btn").addEventListener("click", () => {
     deleteGuest(guest.id);
+  });
+
+  const messageEl = card.querySelector(".guest-message");
+  card.querySelector(".send-location-btn").addEventListener("click", () => {
+    sendLocationToGuest(guest, messageEl);
   });
 
   return card;
@@ -89,16 +107,5 @@ function render() {
     guestListEl.appendChild(buildCard(guest));
   });
 }
-
-sendLocationBtn.addEventListener("click", async () => {
-  const locationMessage = "Localizacao do evento: https://www.google.com/maps";
-
-  try {
-    await navigator.clipboard.writeText(locationMessage);
-    footerMessage.textContent = "Mensagem de localizacao copiada. Agora e so enviar para os confirmados.";
-  } catch {
-    footerMessage.textContent = "Nao foi possivel copiar automaticamente. Mensagem: " + locationMessage;
-  }
-});
 
 render();
