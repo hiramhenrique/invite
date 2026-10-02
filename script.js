@@ -5,6 +5,7 @@ import {
 } from "./firestore.js";
 
 const openModalBtn = document.getElementById("openModalBtn");
+const openHostPanelBtn = document.getElementById("openHostPanelBtn");
 const closeModalBtn = document.getElementById("closeModalBtn");
 const modal = document.getElementById("confirmModal");
 const form = document.getElementById("rsvpForm");
@@ -16,6 +17,7 @@ const successModal = document.getElementById("successModal");
 const closeSuccessBtn = document.getElementById("closeSuccessBtn");
 const successOkBtn = document.getElementById("successOkBtn");
 const successMainText = document.getElementById("successMainText");
+const HOST_PANEL_PASSWORD = "654321";
 
 function openModal() {
   modal.classList.add("show");
@@ -50,6 +52,20 @@ function syncCompanionsNamesField() {
 }
 
 openModalBtn.addEventListener("click", openModal);
+openHostPanelBtn.addEventListener("click", () => {
+  const password = window.prompt("Digite a senha para acessar o painel do anfitriao:");
+
+  if (password === null) {
+    return;
+  }
+
+  if (password === HOST_PANEL_PASSWORD) {
+    window.location.href = "anfitriao.html";
+    return;
+  }
+
+  window.alert("Senha incorreta.");
+});
 closeModalBtn.addEventListener("click", closeModal);
 closeSuccessBtn.addEventListener("click", closeSuccessModal);
 successOkBtn.addEventListener("click", closeSuccessModal);
