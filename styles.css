@@ -7,6 +7,7 @@
   --lime: #62ff43;
   --violet: #b84dff;
   --orange: #ff8a1e;
+  --blue: #35a9ff;
   --red-gps: #ff3f3f;
   --text-main: #ffffff;
   --text-soft: #dfd8ff;
@@ -33,14 +34,75 @@ body {
 }
 
 .container {
-  width: min(980px, 92vw);
+  width: min(1060px, 94vw);
   margin: 0 auto;
   padding: 42px 0 60px;
 }
 
 .hero {
+  position: relative;
   text-align: center;
+  border: 2px solid rgba(255, 41, 207, 0.44);
+  border-radius: 26px;
+  padding: 28px 18px 32px;
+  background: rgba(0, 0, 0, 0.62);
+  box-shadow:
+    0 0 26px rgba(255, 41, 207, 0.2),
+    inset 0 0 20px rgba(39, 248, 255, 0.14);
   animation: fadeUp 700ms ease;
+}
+
+.decor-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.decor {
+  position: absolute;
+  width: clamp(42px, 8vw, 82px);
+  height: auto;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  animation: pulse 2.5s ease-in-out infinite alternate;
+}
+
+.icon-crown {
+  top: 10px;
+  left: 16px;
+  color: var(--yellow);
+  filter: drop-shadow(0 0 8px rgba(255, 229, 59, 0.95));
+}
+
+.icon-headphone {
+  top: 14px;
+  right: 16px;
+  color: var(--orange);
+  filter: drop-shadow(0 0 10px rgba(255, 138, 30, 0.9));
+}
+
+.icon-drink {
+  top: 210px;
+  left: 18px;
+  color: var(--violet);
+  filter: drop-shadow(0 0 10px rgba(184, 77, 255, 0.95));
+}
+
+.icon-grill {
+  bottom: 96px;
+  left: 26px;
+  color: var(--orange);
+  filter: drop-shadow(0 0 10px rgba(255, 138, 30, 0.95));
+}
+
+.icon-bottle {
+  bottom: 86px;
+  right: 26px;
+  color: var(--lime);
+  filter: drop-shadow(0 0 10px rgba(98, 255, 67, 0.95));
 }
 
 .tag {
@@ -56,16 +118,20 @@ body {
   text-shadow: 0 0 12px rgba(255, 41, 207, 0.82);
 }
 
-h1 {
+.title-neon {
   font-family: "Neonderthaw", cursive;
-  font-size: clamp(3rem, 9vw, 6.2rem);
-  line-height: 0.9;
-  margin: 20px 0 14px;
+  margin: 18px 0 0;
+  line-height: 0.8;
   letter-spacing: 1px;
   font-weight: 400;
 }
 
-h1 .name-glow {
+.title-neon span {
+  display: block;
+  font-size: clamp(4.2rem, 12vw, 8.8rem);
+}
+
+.name-pink {
   color: var(--pink);
   text-shadow:
     0 0 8px rgba(255, 41, 207, 0.95),
@@ -73,10 +139,19 @@ h1 .name-glow {
     0 0 58px rgba(255, 41, 207, 0.58);
 }
 
-h1 em {
+.name-cyan {
+  color: var(--cyan);
+  text-shadow:
+    0 0 10px rgba(39, 248, 255, 0.95),
+    0 0 28px rgba(39, 248, 255, 0.84),
+    0 0 60px rgba(39, 248, 255, 0.6);
+}
+
+.age-line {
   font-family: "Bebas Neue", sans-serif;
-  font-style: normal;
-  letter-spacing: 5px;
+  margin: 8px 0 6px;
+  font-size: clamp(3rem, 10vw, 5.6rem);
+  letter-spacing: 3px;
   color: var(--yellow);
   text-shadow:
     0 0 10px rgba(255, 229, 59, 0.98),
@@ -84,40 +159,91 @@ h1 em {
 }
 
 .subtitle {
-  margin: 0 auto;
-  max-width: 700px;
+  margin: 0 auto 6px;
+  max-width: 760px;
   color: var(--text-soft);
-  font-size: clamp(1rem, 2.6vw, 1.25rem);
+  font-size: clamp(1rem, 2.7vw, 1.35rem);
   text-shadow: 0 0 14px rgba(39, 248, 255, 0.36);
 }
 
-.event-card {
-  margin: 30px auto;
-  max-width: 430px;
-  background: var(--card);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(184, 77, 255, 0.78);
-  border-radius: 18px;
-  box-shadow: 0 0 26px rgba(184, 77, 255, 0.26);
-  padding: 18px;
-}
-
-.event-card p {
-  margin: 8px 0;
-  font-size: 1.05rem;
-  text-shadow: 0 0 9px rgba(39, 248, 255, 0.32);
-}
-
-.event-card p:nth-child(1) {
-  color: var(--yellow);
-}
-
-.event-card p:nth-child(2) {
-  color: var(--cyan);
-}
-
-.event-card p:nth-child(3) {
+.party-line {
+  margin: 0;
+  font-size: clamp(1.7rem, 5.2vw, 3.2rem);
   color: var(--lime);
+  text-shadow: 0 0 10px rgba(98, 255, 67, 0.85);
+}
+
+.party-line span {
+  color: var(--pink);
+  text-shadow:
+    0 0 9px rgba(255, 41, 207, 0.9),
+    0 0 24px rgba(255, 41, 207, 0.7);
+}
+
+.energy-note {
+  margin: 6px auto 18px;
+  font-size: clamp(1rem, 2.8vw, 1.4rem);
+  color: var(--blue);
+  text-shadow: 0 0 10px rgba(53, 169, 255, 0.86);
+}
+
+.info-grid {
+  margin: 0 auto 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: min(920px, 100%);
+}
+
+.info-item {
+  border-radius: 16px;
+  background: var(--card);
+  border: 2px solid rgba(184, 77, 255, 0.72);
+  box-shadow: 0 0 18px rgba(184, 77, 255, 0.24);
+  padding: 12px 10px;
+}
+
+.info-item h3 {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 2px;
+  font-size: 1.4rem;
+}
+
+.info-item p {
+  margin: 4px 0 0;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.15;
+}
+
+.info-date h3,
+.info-date p {
+  color: var(--pink);
+  text-shadow: 0 0 9px rgba(255, 41, 207, 0.88);
+}
+
+.info-time h3,
+.info-time p {
+  color: var(--cyan);
+  text-shadow: 0 0 9px rgba(39, 248, 255, 0.88);
+}
+
+.info-loc h3,
+.info-loc p {
+  color: var(--yellow);
+  text-shadow: 0 0 9px rgba(255, 229, 59, 0.88);
+}
+
+.bring-note {
+  margin: 8px auto 18px;
+  width: min(740px, 100%);
+  padding: 12px 14px;
+  border: 2px solid rgba(255, 229, 59, 0.8);
+  border-radius: 14px;
+  color: var(--yellow);
+  font-size: clamp(1rem, 2.6vw, 1.35rem);
+  text-shadow: 0 0 11px rgba(255, 229, 59, 0.9);
+  box-shadow: 0 0 20px rgba(255, 229, 59, 0.24);
 }
 
 .confirm-btn {
@@ -155,13 +281,13 @@ h1 em {
 }
 
 .map-section {
-  margin-top: 56px;
+  margin-top: 44px;
   text-align: center;
   animation: fadeUp 800ms 120ms both;
 }
 
 .map-section h2 {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-size: clamp(1.7rem, 4vw, 2.2rem);
   color: var(--orange);
   text-shadow: 0 0 14px rgba(255, 138, 30, 0.85);
@@ -293,6 +419,8 @@ h1 em {
 
 .modal-content h3 {
   margin: 0 0 14px;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1px;
   font-size: 1.5rem;
 }
 
@@ -388,17 +516,51 @@ input::placeholder {
   }
 }
 
+@keyframes pulse {
+  from {
+    opacity: 0.82;
+    transform: scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
 @media (max-width: 640px) {
   .container {
     padding-top: 28px;
   }
 
+  .hero {
+    padding: 24px 10px 26px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .decor {
+    width: 52px;
+  }
+
+  .icon-drink,
+  .icon-grill {
+    left: 6px;
+  }
+
+  .icon-headphone,
+  .icon-bottle {
+    right: 6px;
+  }
+
+  .icon-grill,
+  .icon-bottle {
+    bottom: 180px;
+  }
+
   .location-highlight {
     text-align: left;
     align-items: flex-start;
-  }
-
-  .event-card {
-    text-align: left;
   }
 }

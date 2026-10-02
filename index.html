@@ -15,15 +15,65 @@
 
   <main class="container">
     <section class="hero">
-      <p class="tag">Voce esta convidado(a) para o aniversario</p>
-      <h1><span class="name-glow">Cauani Fernanda</span><br><em>25 anos</em></h1>
-      <p class="subtitle">Boa musica, amigos e muita energia em uma festa neon inesquecivel.</p>
+      <div class="decor-layer" aria-hidden="true">
+        <svg class="decor icon-crown" viewBox="0 0 64 40" fill="none">
+          <path d="M4 34H60L54 8L40 23L32 6L24 23L10 8L4 34Z" />
+          <path d="M6 34H58" />
+        </svg>
 
-      <div class="event-card">
-        <p><strong>Data:</strong> 24 de outubro de 2026</p>
-        <p><strong>Horario:</strong> 16:00</p>
-        <p><strong>Endereco:</strong> em breve</p>
+        <svg class="decor icon-headphone" viewBox="0 0 64 64" fill="none">
+          <path d="M12 34V30C12 18.95 20.95 10 32 10C43.05 10 52 18.95 52 30V34" />
+          <rect x="8" y="30" width="12" height="20" rx="5" />
+          <rect x="44" y="30" width="12" height="20" rx="5" />
+        </svg>
+
+        <svg class="decor icon-drink" viewBox="0 0 64 64" fill="none">
+          <path d="M10 12H54L34 34H30L10 12Z" />
+          <path d="M32 34V50" />
+          <path d="M22 54H42" />
+          <path d="M44 18L54 8" />
+        </svg>
+
+        <svg class="decor icon-grill" viewBox="0 0 64 64" fill="none">
+          <path d="M14 30H50C50 40 42 48 32 48C22 48 14 40 14 30Z" />
+          <path d="M18 30L22 22M26 30L30 22M34 30L38 22M42 30L46 22" />
+          <path d="M24 48L20 58M40 48L44 58" />
+          <path d="M24 14C24 12 25 10 26 9M32 14C32 11 33 9 35 7M40 14C40 12 41 10 42 9" />
+        </svg>
+
+        <svg class="decor icon-bottle" viewBox="0 0 64 64" fill="none">
+          <path d="M18 20V10H28V20L32 28V54H14V28L18 20Z" />
+          <path d="M40 34H56V54H40V34Z" />
+          <path d="M40 40H56" />
+        </svg>
       </div>
+
+      <p class="tag">Voce esta convidado(a) para o aniversario</p>
+      <h1 class="title-neon">
+        <span class="name-pink">Cauani</span>
+        <span class="name-cyan">Fernanda</span>
+      </h1>
+      <p class="age-line">25 anos</p>
+      <p class="subtitle">Voce esta convidado(a) para curtir uma tarde de muita energia.</p>
+      <p class="party-line">Vai ser uma festa <span>NEON!</span></p>
+      <p class="energy-note">Boa musica, amigos e muita energia.</p>
+
+      <div class="info-grid">
+        <article class="info-item info-date">
+          <h3>Data</h3>
+          <p>24 de outubro de 2026</p>
+        </article>
+        <article class="info-item info-time">
+          <h3>Horario</h3>
+          <p>16 horas</p>
+        </article>
+        <article class="info-item info-loc">
+          <h3>Local</h3>
+          <p>Sera enviado apos confirmar presenca</p>
+        </article>
+      </div>
+
+      <p class="bring-note">Traga meio quilo de carne por pessoa + o que for beber.</p>
 
       <button id="openModalBtn" class="confirm-btn" type="button">
         Confirmar Presenca
