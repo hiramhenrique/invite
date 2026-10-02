@@ -65,13 +65,14 @@ form.addEventListener("submit", (event) => {
   }
 
   const fullName = form.fullName.value.trim();
+  const phone = form.phone.value.trim();
   const companions = Number(form.companions.value);
 
-  if (!fullName || Number.isNaN(companions) || companions < 0) {
+  if (!fullName || !phone || Number.isNaN(companions) || companions < 0) {
     return;
   }
 
-  successMainText.textContent = `${fullName}, sua presenca foi confirmada com ${companions} acompanhante(s).`;
+  successMainText.textContent = `${fullName}, sua presenca foi confirmada com ${companions} acompanhante(s). Telefone: ${phone}.`;
 
   closeModal();
   openSuccessModal();

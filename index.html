@@ -77,30 +77,6 @@
         Confirmar Presenca
       </button>
     </section>
-
-    <section class="map-section">
-      <h2>Localizacao do Evento</h2>
-      <div class="location-highlight">
-        <span class="gps-arrow" aria-hidden="true"></span>
-        <p>Localizacao oficial em breve. Assim que confirmar presenca, voce recebe o endereco exato.</p>
-      </div>
-      <p class="map-note">
-        Abra o mapa para facilitar seu trajeto no dia da festa.
-      </p>
-
-      <div class="map-frame-wrap">
-        <iframe
-          title="Mapa - local da festa"
-          src="https://maps.google.com/maps?q=Brasil&t=&z=4&ie=UTF8&iwloc=&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-
-      <a class="maps-link" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">
-        Abrir no Google Maps
-      </a>
-    </section>
   </main>
 
   <div id="confirmModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
@@ -111,6 +87,9 @@
       <form id="rsvpForm">
         <label for="fullName">Nome completo</label>
         <input id="fullName" name="fullName" type="text" required placeholder="Digite seu nome completo">
+
+        <label for="phone">Telefone</label>
+        <input id="phone" name="phone" type="tel" required placeholder="(00) 00000-0000">
 
         <label for="companions">Quantidade de acompanhantes</label>
         <input id="companions" class="no-spin" name="companions" type="number" min="0" max="10" required>
@@ -126,6 +105,13 @@
       <h3 id="successTitle">Presenca confirmada!</h3>
       <p id="successMainText" class="success-main-text"></p>
       <p class="success-help-text">Traga meio quilo de carne por pessoa e a bebida que voce for consumir.</p>
+      <div class="location-highlight in-modal">
+        <span class="gps-arrow" aria-hidden="true"></span>
+        <p>Localizacao liberada apos confirmacao. Toque abaixo para acessar no Google Maps.</p>
+      </div>
+      <a class="maps-link modal-map-link" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">
+        Acessar localizacao
+      </a>
       <button id="successOkBtn" class="submit-btn" type="button">Fechar</button>
     </div>
   </div>
