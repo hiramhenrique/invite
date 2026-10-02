@@ -2,7 +2,7 @@ const openModalBtn = document.getElementById("openModalBtn");
 const closeModalBtn = document.getElementById("closeModalBtn");
 const modal = document.getElementById("confirmModal");
 const form = document.getElementById("rsvpForm");
-const resultMessage = document.getElementById("resultMessage");
+const screenMessage = document.getElementById("screenMessage");
 
 function openModal() {
   modal.classList.add("show");
@@ -36,16 +36,21 @@ form.addEventListener("submit", (event) => {
   const companions = Number(form.companions.value);
 
   if (!fullName) {
-    resultMessage.textContent = "Por favor, informe seu nome completo.";
+    screenMessage.textContent = "Por favor, informe seu nome completo.";
+    screenMessage.classList.add("show");
     return;
   }
 
   if (Number.isNaN(companions) || companions < 0) {
-    resultMessage.textContent = "Informe uma quantidade valida de acompanhantes.";
+    screenMessage.textContent = "Informe uma quantidade valida de acompanhantes.";
+    screenMessage.classList.add("show");
     return;
   }
 
-  resultMessage.textContent = `${fullName}, sua presenca foi confirmada com ${companions} acompanhante(s).`;
+  screenMessage.textContent = `${fullName}, sua presenca foi confirmada com ${companions} acompanhante(s).`;
+  screenMessage.classList.add("show");
+
+  closeModal();
   form.reset();
   form.companions.value = "0";
 });

@@ -124,6 +124,21 @@ h1 em {
   box-shadow: 0 0 30px rgba(40, 247, 255, 0.8), 0 0 42px rgba(255, 46, 209, 0.72);
 }
 
+.screen-message {
+  min-height: 1.4em;
+  margin: 14px auto 0;
+  max-width: 620px;
+  color: var(--lime);
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(116, 255, 99, 0.76);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.screen-message.show {
+  opacity: 1;
+}
+
 .map-section {
   margin-top: 56px;
   text-align: center;
@@ -286,6 +301,17 @@ input::placeholder {
   color: #c8bcdf;
 }
 
+.no-spin {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.no-spin::-webkit-outer-spin-button,
+.no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .submit-btn {
   width: 100%;
   border: 0;
@@ -297,14 +323,6 @@ input::placeholder {
   font-size: 1rem;
   font-weight: 800;
   cursor: pointer;
-}
-
-.result-message {
-  min-height: 1.4em;
-  margin-top: 14px;
-  color: var(--lime);
-  font-weight: 700;
-  text-shadow: 0 0 8px rgba(116, 255, 99, 0.76);
 }
 
 .bg-shape {

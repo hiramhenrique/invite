@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Convite | 25 anos da Cauni Fernanda</title>
+  <title>Convite | 25 anos da Cauani Fernanda</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Monoton&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
   <main class="container">
     <section class="hero">
       <p class="tag">Voce esta convidado(a) para o aniversario</p>
-      <h1><span class="name-glow">Cauni Fernanda</span><br><em>25 anos</em></h1>
+      <h1><span class="name-glow">Cauani Fernanda</span><br><em>25 anos</em></h1>
       <p class="subtitle">Boa musica, amigos e muita energia em uma festa neon inesquecivel.</p>
 
       <div class="event-card">
@@ -28,6 +28,8 @@
       <button id="openModalBtn" class="confirm-btn" type="button">
         Confirmar Presenca
       </button>
+
+      <p id="screenMessage" class="screen-message" aria-live="polite"></p>
     </section>
 
     <section class="map-section">
@@ -65,12 +67,10 @@
         <input id="fullName" name="fullName" type="text" required placeholder="Digite seu nome completo">
 
         <label for="companions">Quantidade de acompanhantes</label>
-        <input id="companions" name="companions" type="number" min="0" max="10" value="0" required>
+        <input id="companions" class="no-spin" name="companions" type="number" min="0" max="10" value="0" required>
 
         <button class="submit-btn" type="submit">Enviar confirmacao</button>
       </form>
-
-      <p id="resultMessage" class="result-message" aria-live="polite"></p>
     </div>
   </div>
 
