@@ -2,8 +2,10 @@ const openModalBtn = document.getElementById("openModalBtn");
 const closeModalBtn = document.getElementById("closeModalBtn");
 const modal = document.getElementById("confirmModal");
 const form = document.getElementById("rsvpForm");
-const screenMessage = document.getElementById("screenMessage");
-const bringNote = document.getElementById("bringNote");
+const successModal = document.getElementById("successModal");
+const closeSuccessBtn = document.getElementById("closeSuccessBtn");
+const successOkBtn = document.getElementById("successOkBtn");
+const successMainText = document.getElementById("successMainText");
 
 function openModal() {
   modal.classList.add("show");
@@ -15,8 +17,20 @@ function closeModal() {
   modal.setAttribute("aria-hidden", "true");
 }
 
+function openSuccessModal() {
+  successModal.classList.add("show");
+  successModal.setAttribute("aria-hidden", "false");
+}
+
+function closeSuccessModal() {
+  successModal.classList.remove("show");
+  successModal.setAttribute("aria-hidden", "true");
+}
+
 openModalBtn.addEventListener("click", openModal);
 closeModalBtn.addEventListener("click", closeModal);
+closeSuccessBtn.addEventListener("click", closeSuccessModal);
+successOkBtn.addEventListener("click", closeSuccessModal);
 
 modal.addEventListener("click", (event) => {
   if (event.target === modal) {
@@ -24,37 +38,43 @@ modal.addEventListener("click", (event) => {
   }
 });
 
+successModal.addEventListener("click", (event) => {
+  if (event.target === successModal) {
+    closeSuccessModal();
+  }
+});
+
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && modal.classList.contains("show")) {
-    closeModal();
+  if (event.key === "Escape") {
+    if (modal.classList.contains("show")) {
+      closeModal();
+    }
+
+    if (successModal.classList.contains("show")) {
+      closeSuccessModal();
+    }
   }
 });
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
   const fullName = form.fullName.value.trim();
   const companions = Number(form.companions.value);
 
-  if (!fullName) {
-    screenMessage.textContent = "Por favor, informe seu nome completo.";
-    screenMessage.classList.add("show");
+  if (!fullName || Number.isNaN(companions) || companions < 0) {
     return;
   }
 
-  if (Number.isNaN(companions) || companions < 0) {
-    screenMessage.textContent = "Informe uma quantidade valida de acompanhantes.";
-    screenMessage.classList.add("show");
-    return;
-  }
-
-  screenMessage.textContent = `${fullName}, sua presenca foi confirmada com ${companions} acompanhante(s).`;
-  screenMessage.classList.add("show");
-
-  bringNote.textContent = "Traga meio quilo de carne por pessoa e a bebida que voce for consumir.";
-  bringNote.classList.add("show");
+  successMainText.textContent = `${fullName}, sua presenca foi confirmada com ${companions} acompanhante(s).`;
 
   closeModal();
+  openSuccessModal();
   form.reset();
   form.companions.value = "";
 });

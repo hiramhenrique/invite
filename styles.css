@@ -235,37 +235,6 @@ body {
   text-shadow: 0 0 9px rgba(255, 229, 59, 0.88);
 }
 
-.bring-note {
-  margin: 6px auto 8px;
-  width: min(740px, 100%);
-  padding: 10px 12px;
-  border: 2px solid rgba(255, 229, 59, 0.8);
-  border-radius: 14px;
-  color: var(--yellow);
-  font-size: clamp(0.92rem, 2.2vw, 1.15rem);
-  text-shadow: 0 0 11px rgba(255, 229, 59, 0.9);
-  box-shadow: 0 0 20px rgba(255, 229, 59, 0.24);
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  border-width: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  transition: opacity 220ms ease, max-height 220ms ease, padding 220ms ease, margin 220ms ease, border-width 220ms ease;
-}
-
-.bring-note.show {
-  opacity: 1;
-  max-height: 120px;
-  border-width: 2px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 6px;
-  margin-bottom: 8px;
-}
-
 .confirm-btn {
   border: 0;
   border-radius: 18px;
@@ -283,21 +252,6 @@ body {
 .confirm-btn:hover {
   transform: translateY(-2px) scale(1.01);
   box-shadow: 0 0 34px rgba(39, 248, 255, 0.88), 0 0 46px rgba(255, 41, 207, 0.78);
-}
-
-.screen-message {
-  min-height: 1.4em;
-  margin: 8px auto 0;
-  max-width: 620px;
-  color: var(--lime);
-  font-weight: 700;
-  text-shadow: 0 0 8px rgba(116, 255, 99, 0.76);
-  opacity: 0;
-  transition: opacity 180ms ease;
-}
-
-.screen-message.show {
-  opacity: 1;
 }
 
 .map-section {
@@ -442,6 +396,24 @@ body {
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 1px;
   font-size: 1.5rem;
+}
+
+.success-content {
+  text-align: center;
+}
+
+.success-main-text {
+  margin: 6px 0 8px;
+  color: var(--lime);
+  font-size: 1.05rem;
+  text-shadow: 0 0 9px rgba(98, 255, 67, 0.85);
+}
+
+.success-help-text {
+  margin: 0 0 14px;
+  color: var(--yellow);
+  font-size: 0.98rem;
+  text-shadow: 0 0 9px rgba(255, 229, 59, 0.84);
 }
 
 label {

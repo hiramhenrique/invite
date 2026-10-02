@@ -73,13 +73,9 @@
         </article>
       </div>
 
-      <p id="bringNote" class="bring-note" aria-live="polite"></p>
-
       <button id="openModalBtn" class="confirm-btn" type="button">
         Confirmar Presenca
       </button>
-
-      <p id="screenMessage" class="screen-message" aria-live="polite"></p>
     </section>
 
     <section class="map-section">
@@ -121,6 +117,16 @@
 
         <button class="submit-btn" type="submit">Enviar confirmacao</button>
       </form>
+    </div>
+  </div>
+
+  <div id="successModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="successTitle">
+    <div class="modal-content success-content">
+      <button id="closeSuccessBtn" class="close-btn" type="button" aria-label="Fechar confirmacao">X</button>
+      <h3 id="successTitle">Presenca confirmada!</h3>
+      <p id="successMainText" class="success-main-text"></p>
+      <p class="success-help-text">Traga meio quilo de carne por pessoa e a bebida que voce for consumir.</p>
+      <button id="successOkBtn" class="submit-btn" type="button">Fechar</button>
     </div>
   </div>
 
